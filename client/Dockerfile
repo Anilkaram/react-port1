@@ -3,6 +3,7 @@ WORKDIR /app
 COPY *.json ./
 RUN npm install
 COPY . .
+RUN npm run build
 
 FROM build as test
 RUN npm install --production
