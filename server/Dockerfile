@@ -1,10 +1,15 @@
-FROM node:20-alpine3.20 as build
+FROM node:20-alpine3.20 AS buildder
 WORKDIR /app
-COPY *.json ./
-RUN npm install express mysql2 cors
+COPY package*.json ./
+RUN npm install 
 COPY . .
 
-FROM build as test
+FROM node:20-apline3.20 as Production
+WORKDIR /app
+COPY --from=builder /app/build ./
 RUN npm install --production
-COPY . .
+COPY package*.json ./
+ENV NODE_ENV=production
+EXPOSE 3000
+USER node
 CMD ["node", "server.js"]
