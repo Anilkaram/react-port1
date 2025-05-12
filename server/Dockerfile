@@ -2,6 +2,8 @@ FROM node:20-alpine3.20 AS buildder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install 
+COPY package*.json ./
+RUN npm install 
 COPY . .
 
 FROM node:20-apline3.20 as Production
