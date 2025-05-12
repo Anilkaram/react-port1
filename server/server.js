@@ -18,7 +18,7 @@ connection.query("CREATE DATABASE IF NOT EXISTS portfolio_db", (err) => {
   const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'yourpassword',
+    password: 'root@123',
     database: 'portfolio_db'
   });
 
